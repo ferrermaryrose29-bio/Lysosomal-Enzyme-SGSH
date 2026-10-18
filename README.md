@@ -1,4 +1,4 @@
-readme <- r"---(# Lysosomal Enzyme Analysis: SGSH (N-sulfoglucosamine sulfohydrolase)
+# Lysosomal Enzyme Analysis: SGSH (N-sulfoglucosamine sulfohydrolase)
 
 - **Gene:** SGSH
 - **Protein:** N-sulfoglucosamine sulfohydrolase (sulfamidase), isoform 1 precursor
@@ -18,12 +18,7 @@ I created the public repository `lysosomal-enzyme-SGSH` on GitHub, cloned it int
 
 ### Step 3: Set up Git
 
-Before committing, I set my name and email in the RStudio Terminal:
-
-```
-git config --global user.name "Ferrer Mary Rose"
-git config --global user.email "my GitHub email"
-```
+Before committing, I set my Git name and email in the RStudio Terminal using `git config --global user.name` and `git config --global user.email`.
 
 ### Step 4: Edit the script
 
@@ -52,11 +47,7 @@ fasta <- rentrez::entrez_fetch(db = "protein", id = accession,
 writeLines(fasta, file.path("data", paste0(gene, ".fasta")))
 ```
 
-The saved file `data/SGSH.fasta` has this header:
-
-```
->NP_000190.1 N-sulfoglucosamine sulfohydrolase isoform 1 precursor [Homo sapiens]
-```
+The sequence is saved as `data/SGSH.fasta`.
 
 ### Step 7: Console output
 
@@ -120,18 +111,23 @@ The script searched for N-X-S/T, where X is not proline, and found 5 motifs:
 ## Answers to the Questions
 
 **1. What does your enzyme normally break down inside lysosomes?**
+
 Heparan sulfate, a glycosaminoglycan. SGSH removes the sulfate group from the N-sulfated glucosamine at the non-reducing end of the chain, which lets other lysosomal enzymes continue the breakdown.
 
 **2. What is the total length of your protein, and which amino acids are most common?**
+
 502 amino acids. The most common are leucine (61, 12.15%), proline (40, 7.97%), alanine (34, 6.77%), and glycine and serine (33 each, 6.57%).
 
 **3. How many potential N-glycosylation motifs did you find? Where are they located?**
+
 Five, at positions 41, 142, 151, 264, and 413 (see the table above).
 
 **4. Why can glycosylation matter for lysosomal proteins? Does finding a motif prove the protein is glycosylated?**
+
 N-glycans on lysosomal enzymes can be modified with a mannose-6-phosphate (M6P) tag. M6P receptors recognize this tag and sort the enzyme to the lysosome. Glycosylation also helps folding and stability. No. N-X-S/T only predicts a possible site. It does not show that a glycan is attached, that the site is used, or that an M6P tag is present.
 
 **5. What could happen in the cell if your enzyme did not work properly?**
+
 Heparan sulfate would not be fully broken down and would build up in the lysosomes, which disrupts cell function. In humans, SGSH deficiency causes mucopolysaccharidosis type IIIA (MPS IIIA, Sanfilippo syndrome A), a lysosomal storage disease that mostly affects the brain and nervous system.
 
 ## Repository Contents
@@ -144,6 +140,3 @@ figures/   SGSH_amino_acid_composition.png, SGSH_potential_N_glycosylation.png
 ```
 
 **Note:** N-X-S/T is a potential N-glycosylation motif, not confirmation of a glycan or an M6P tag. Sequence analysis does not measure enzyme activity.
-)---"
-
-writeLines(readme, "README.md")
